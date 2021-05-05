@@ -1,0 +1,3 @@
+[submodule "spell"]
+	path = spell
+	url = git@github.com:monkinco/vim-spell.git
