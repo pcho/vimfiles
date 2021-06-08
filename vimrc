@@ -7,26 +7,22 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
+if !empty(glob("/.dockerenv"))
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-let g:go_gopls_enabled = 1
+    let g:go_gopls_enabled = 1
 
-Plug 'ojroques/vim-oscyank'
+    Plug 'dense-analysis/ale'
 
-let g:oscyank_term = 'tmux'
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
-
-Plug 'dense-analysis/ale'
-
-let g:ale_sign_error = 'e'
-let g:ale_sign_warning = 'w'
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
+    let g:ale_sign_error = 'e'
+    let g:ale_sign_warning = 'w'
+    let g:ale_fix_on_save = 1
+    let g:ale_fixers = {
             \   'json': ['fixjson', 'prettier'],
             \   'javascript': ['prettier'],
             \   'scss': ['prettier', 'stylelint'],
@@ -35,7 +31,7 @@ let g:ale_fixers = {
             \   'sh': ['shfmt', 'prettier']
             \}
 
-function! LinterStatus() abort
+    function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
 
     let l:all_errors = l:counts.error + l:counts.style_error
@@ -46,28 +42,30 @@ function! LinterStatus() abort
                 \   all_non_errors,
                 \   all_errors
                 \)
-endfunction
+    endfunction
 
-Plug 'jiangmiao/auto-pairs'
+    Plug 'jiangmiao/auto-pairs'
 
-let g:AutoPairsMapSpace = 0
-    imap <silent> <expr> <space> pumvisible()
-            \ ? "<space>"
-            \ : "<c-r>=AutoPairsSpace()<cr>"
+    let g:AutoPairsMapSpace = 0
+     imap <silent> <expr> <space> pumvisible()
+             \ ? "<space>"
+             \ : "<c-r>=AutoPairsSpace()<cr>"
+
+    Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+
+    let g:shfmt_fmt_on_save = 1
+
+endif
+
+Plug 'ojroques/vim-oscyank'
+
+let g:oscyank_term = 'tmux'
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
 
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
-
-let g:shfmt_fmt_on_save = 1
-
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}
-
-let g:vimwiki_list = [{'path': '~/.vimwiki/', 'path_html': '~/.public_wiki/', 'syntax': 'default'}]
-let g:vimwiki_global_ext = 0
-
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
@@ -175,7 +173,11 @@ nnoremap <silent> <leader>x :let @/ = ""<cr>
 set laststatus=2
 set statusline=
 set statusline+=[%n][%t]%m%r%h%w
-set statusline+=[%{LinterStatus()}]
+
+if !empty(glob("/.dockerenv"))
+    set statusline+=[%{LinterStatus()}]
+endif
+
 set statusline+=%=
 set statusline+=[%P][%l:%c/%L][%Y]
 
