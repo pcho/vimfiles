@@ -8,6 +8,7 @@ let g:ft_man_no_sect_fallback = 1
 call plug#begin('~/.vim/plugged')
 
 Plug 'pangloss/vim-javascript'
+Plug 'python-mode/python-mode'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
@@ -21,6 +22,7 @@ let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
+        \   'python': ['autopep8', 'yapf'],
         \   'json': ['fixjson', 'prettier'],
         \   'javascript': ['prettier'],
         \   'scss': ['prettier', 'stylelint'],
