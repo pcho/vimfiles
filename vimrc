@@ -7,14 +7,16 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'alvan/vim-closetag'
+
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+
 Plug 'pangloss/vim-javascript'
 Plug 'python-mode/python-mode'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-let g:go_gopls_enabled = 1
 
 Plug 'dense-analysis/ale'
 
