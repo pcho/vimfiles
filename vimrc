@@ -17,6 +17,7 @@ Plug 'python-mode/python-mode'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
+Plug 'iamcco/coc-tailwindcss'
 
 Plug 'dense-analysis/ale'
 
