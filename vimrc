@@ -58,10 +58,10 @@ Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 
 let g:shfmt_fmt_on_save = 1
 
-" Plug 'ojroques/vim-oscyank'
+Plug 'ojroques/vim-oscyank'
 
-" let g:oscyank_term = 'tmux'
-" autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
+let g:oscyank_term = 'tmux'
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
 
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
