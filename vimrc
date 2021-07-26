@@ -7,17 +7,8 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf',
-Plug 'alvan/vim-closetag'
-
-let g:closetag_emptyTags_caseSensitive = 1
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
-
 Plug 'pangloss/vim-javascript'
 Plug 'python-mode/python-mode'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
 Plug 'iamcco/coc-tailwindcss'
 
 Plug 'dense-analysis/ale'
@@ -55,6 +46,11 @@ let g:AutoPairsMapSpace = 0
          \ ? "<space>"
          \ : "<c-r>=AutoPairsSpace()<cr>"
 
+Plug 'alvan/vim-closetag'
+
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 
 let g:shfmt_fmt_on_save = 1
@@ -64,6 +60,7 @@ Plug 'ojroques/vim-oscyank'
 let g:oscyank_term = 'tmux'
 autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
 
+Plug 'junegunn/fzf',
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-mucomplete'
