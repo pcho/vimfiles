@@ -7,6 +7,7 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'junegunn/fzf',
 Plug 'alvan/vim-closetag'
 
 let g:closetag_emptyTags_caseSensitive = 1
@@ -98,7 +99,8 @@ let maplocalleader="\\"
 
 set path=.,**
 
-nnoremap <C-p> :find<space>
+nnoremap <leader>p :find<space>
+nnoremap <C-p> :FZF<cr>
 nnoremap <leader>d :lcd %:p:h<cr>
 nnoremap <leader>s :pwd<cr>
 
