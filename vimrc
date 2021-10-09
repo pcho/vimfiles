@@ -7,9 +7,9 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'python-mode/python-mode', { 'for': 'python' }
-" Plug 'iamcco/coc-tailwindcss'
+Plug 'pangloss/vim-javascript'
+Plug 'python-mode/python-mode'
+Plug 'iamcco/coc-tailwindcss'
 
 Plug 'dense-analysis/ale'
 
