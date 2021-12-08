@@ -7,6 +7,7 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
 Plug 'python-mode/python-mode'
 Plug 'iamcco/coc-tailwindcss'
