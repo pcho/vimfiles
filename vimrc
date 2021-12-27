@@ -7,10 +7,6 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'pangloss/vim-javascript'
-Plug 'python-mode/python-mode'
-Plug 'iamcco/coc-tailwindcss'
-
 Plug 'dense-analysis/ale'
 
 let g:ale_sign_error = 'e'
@@ -19,23 +15,23 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
         \   'python': ['autopep8', 'yapf'],
         \   'json': ['fixjson', 'prettier'],
-        \   'javascript': ['prettier'],
+        \   'javascript': ['prettier', 'eslint'],
         \   'css': ['prettier', 'stylelint'],
         \   'html': ['prettier'],
         \   'sh': ['shfmt', 'prettier']
         \}
 
 function! LinterStatus() abort
-let l:counts = ale#statusline#Count(bufnr(''))
+    let l:counts = ale#statusline#Count(bufnr(''))
 
-let l:all_errors = l:counts.error + l:counts.style_error
-let l:all_non_errors = l:counts.total - l:all_errors
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
 
-return l:counts.total == 0 ? 'OK' : printf(
-            \   '%dW %dE',
-            \   all_non_errors,
-            \   all_errors
-            \)
+    return l:counts.total == 0 ? 'OK' : printf(
+                \   '%dW %dE',
+                \   all_non_errors,
+                \   all_errors
+                \)
 endfunction
 
 Plug 'jiangmiao/auto-pairs'
