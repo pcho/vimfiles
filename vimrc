@@ -51,6 +51,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
+Plug 'pantharshit00/vim-prisma'
 
 call plug#end()
 
