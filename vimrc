@@ -42,9 +42,6 @@ let g:AutoPairsMapSpace = 0
          \ : "<c-r>=AutoPairsSpace()<cr>"
 
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
-
-let g:shfmt_fmt_on_save = 1
-
 Plug 'junegunn/fzf',
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
