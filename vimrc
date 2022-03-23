@@ -56,13 +56,15 @@ syntax on
 set termguicolors
 
 function! MyHighlights() abort
-    hi Normal                                  ctermbg=none guibg=#121212 gui=none
-    hi SignColumn      cterm=bold ctermfg=none ctermbg=none guibg=#121212 gui=none
+    hi Normal                                  ctermbg=none guibg=#121212
+    hi SignColumn      cterm=bold ctermfg=none ctermbg=none guibg=#121212
     hi ALEErrorSign               ctermfg=9
     hi ALEWarningSign             ctermfg=11
-    hi LineNr                     ctermfg=8    ctermbg=none guibg=#121212 gui=none
-    hi StatusLine      cterm=bold ctermfg=232  ctermbg=8    guibg=#6c6c6c gui=none
-    hi StatusLineNC    cterm=none ctermfg=250  ctermbg=none guibg=#121212 gui=none
+    hi LineNr                     ctermfg=8    ctermbg=none guibg=#121212
+    hi StatusLine      cterm=bold ctermfg=232  ctermbg=8    guibg=#6c6c6c
+    hi StatusLineNC    cterm=none ctermfg=250  ctermbg=none guibg=#121212
+    hi CursorLine                                           guibg=#1c1c1c
+    hi CursorLineNr                                         guibg=#121212
 endfunction
 
 augroup MyColors
@@ -103,6 +105,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set clipboard& clipboard^=unnamed,unnamedplus
 set fileformats=unix,mac,dos
+set cursorline
 set number
 set relativenumber
 set autowrite
@@ -215,6 +218,12 @@ function! StripTrailingWhitespace()
     endif
     %s/\s\+$//e
 endfunction
+
+augroup cursor_stuff
+    au!
+	au WinLeave,InsertEnter * set nocursorline
+	au WinEnter,InsertLeave * set cursorline
+augroup END
 
 augroup vim_at_start
     au!
