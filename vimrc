@@ -56,19 +56,16 @@ Plug 'pantharshit00/vim-prisma'
 call plug#end()
 
 syntax on
-set t_Co=256
+set termguicolors
 
 function! MyHighlights() abort
-    hi Normal                                  ctermbg=none
-    hi GitGutterAdd               ctermfg=2
-    hi GitGutterChange            ctermfg=3
-    hi GitGutterDelete            ctermfg=1
-    hi SignColumn      cterm=bold ctermfg=none ctermbg=none
+    hi Normal                                  ctermbg=none guibg=#121212 gui=none
+    hi SignColumn      cterm=bold ctermfg=none ctermbg=none guibg=#121212 gui=none
     hi ALEErrorSign               ctermfg=9
     hi ALEWarningSign             ctermfg=11
-    hi LineNr                     ctermfg=8    ctermbg=none
-    hi StatusLine      cterm=bold ctermfg=232  ctermbg=8
-    hi StatusLineNC    cterm=none ctermfg=250  ctermbg=none
+    hi LineNr                     ctermfg=8    ctermbg=none guibg=#121212 gui=none
+    hi StatusLine      cterm=bold ctermfg=232  ctermbg=8    guibg=#6c6c6c gui=none
+    hi StatusLineNC    cterm=none ctermfg=250  ctermbg=none guibg=#121212 gui=none
 endfunction
 
 augroup MyColors
