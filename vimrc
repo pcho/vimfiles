@@ -7,6 +7,7 @@ let g:ft_man_no_sect_fallback = 1
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'romainl/apprentice'
 Plug 'dense-analysis/ale'
 
 let g:ale_sign_error = 'e'
