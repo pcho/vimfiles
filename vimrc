@@ -8,19 +8,47 @@ let g:ft_man_no_sect_fallback = 1
 call plug#begin('~/.vim/plugged')
 
 Plug 'romainl/apprentice'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = ['coc-json']
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>rn <Plug>(coc-rename)
+
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+command! -nargs=0 Format :call CocActionAsync('format')
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 Plug 'dense-analysis/ale'
 
+let g:ale_disable_lsp = 1
 let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
 let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-        \   'python': ['autopep8', 'yapf'],
-        \   'json': ['fixjson', 'prettier'],
-        \   'javascript': ['prettier', 'eslint'],
-        \   'css': ['prettier', 'stylelint'],
-        \   'html': ['prettier'],
-        \   'sh': ['shfmt', 'prettier']
-        \}
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -42,11 +70,9 @@ let g:AutoPairsMapSpace = 0
          \ ? "<space>"
          \ : "<c-r>=AutoPairsSpace()<cr>"
 
-Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'junegunn/fzf',
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
 Plug 'pantharshit00/vim-prisma'
