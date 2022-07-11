@@ -117,6 +117,8 @@ let g:netrw_special_syntax = 1
 
 nnoremap <leader>e :e.<cr>
 nnoremap <leader>f :buffers<CR>:buffer<Space>
+nnoremap <leader>ff :Format<CR>
+nnoremap <leader>ft :CocCommand tailwindCSS.forceActivate<CR>
 
 nnoremap <leader>vr :e $MYVIMRC<cr>
 nnoremap <leader>vs :e ~/.dotfiles/.zsh<cr>
@@ -144,6 +146,7 @@ set hidden
 set nowrap
 nnoremap <leader>W :set wrap!<cr>
 
+set cmdheight=2
 set noshowcmd
 set showmatch
 set shortmess+=acI

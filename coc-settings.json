@@ -20,6 +20,12 @@
     "javascriptreact",
     "prettier"
   ],
-  "javascript.suggest.autoImports": true,
-  "typescript.suggest.autoImports": true
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.rootPatterns": [
+    ".git",
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    ".hg",
+    ".projections.json"
+  ],
 }
