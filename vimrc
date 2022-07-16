@@ -11,7 +11,7 @@ Plug 'romainl/apprentice'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-json']
+let g:coc_global_extensions = ['coc-json', 'coc-prettier', 'coc-prisma', '@yaegassy/coc-tailwindcss3', 'coc-tsserver', 'coc-sh', 'coc-diagnostic']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
