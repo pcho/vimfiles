@@ -8,16 +8,28 @@ let g:ft_man_no_sect_fallback = 1
 call plug#begin('~/.vim/plugged')
 
 Plug 'romainl/apprentice'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-json', 'coc-prettier', 'coc-prisma', '@yaegassy/coc-tailwindcss3', 'coc-tsserver', 'coc-sh', 'coc-diagnostic']
+let g:coc_global_extensions = [
+            \ 'coc-json',
+            \ 'coc-prettier',
+            \ 'coc-prisma',
+            \ '@yaegassy/coc-tailwindcss3',
+            \ 'coc-tsserver',
+            \ 'coc-sh',
+            \ 'coc-diagnostic'
+            \ ]
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ CheckBackspace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -29,8 +41,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 nmap <leader>rn <Plug>(coc-rename)
 
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
 command! -nargs=0 Format :call CocActionAsync('format')
 
 function! ShowDocumentation()
@@ -41,6 +51,8 @@ function! ShowDocumentation()
   endif
 endfunction
 
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 Plug 'dense-analysis/ale'
@@ -48,7 +60,7 @@ Plug 'dense-analysis/ale'
 let g:ale_disable_lsp = 1
 let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
-let g:ale_fix_on_save = 1
+let g:ale_sign_info = 'i'
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
