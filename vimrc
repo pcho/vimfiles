@@ -5,6 +5,12 @@ let g:ft_man_folding_enable = 1
 let g:ft_man_open_mode = 'vert'
 let g:ft_man_no_sect_fallback = 1
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'romainl/apprentice'
@@ -34,12 +40,12 @@ endfunction
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
 
-nmap <leader>rn <Plug>(coc-rename)
+nnoremap <leader>rn <Plug>(coc-rename)
 
 command! -nargs=0 Format :call CocActionAsync('format')
 
@@ -250,7 +256,6 @@ function! CloseWindowOrKillBuffer()
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
-nnoremap <leader>wd :w\|bd<cr>
 nnoremap <leader>w :w!<cr>
 nnoremap <leader>q :q<cr>
 
