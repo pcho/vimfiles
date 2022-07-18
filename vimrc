@@ -26,6 +26,8 @@ let g:coc_global_extensions = [
             \ 'coc-diagnostic'
             \ ]
 
+nnoremap <leader>ft :CocCommand tailwindCSS.forceActivate<CR>
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ CheckBackspace() ? "\<TAB>" :
@@ -48,6 +50,8 @@ nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <leader>rn <Plug>(coc-rename)
 
 command! -nargs=0 Format :call CocActionAsync('format')
+
+nnoremap <leader>ff :Format<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -135,8 +139,6 @@ let g:netrw_special_syntax = 1
 
 nnoremap <leader>e :e.<cr>
 nnoremap <leader>f :buffers<CR>:buffer<Space>
-nnoremap <leader>ff :Format<CR>
-nnoremap <leader>ft :CocCommand tailwindCSS.forceActivate<CR>
 
 nnoremap <leader>vr :e $MYVIMRC<cr>
 nnoremap <leader>vs :e ~/.dotfiles/.zsh<cr>
