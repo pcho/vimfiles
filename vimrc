@@ -85,6 +85,8 @@ function! LinterStatus() abort
                 \)
 endfunction
 
+nnoremap <leader>dd :ALEDetail<cr>
+
 Plug 'jiangmiao/auto-pairs'
 
 let g:AutoPairsMapSpace = 0
