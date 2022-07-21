@@ -13,10 +13,10 @@
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
+    "json",
     "javascript",
     "typescript",
     "typescriptreact",
-    "json",
     "javascriptreact",
     "prettier"
   ],
@@ -24,8 +24,6 @@
   "coc.preferences.rootPatterns": [
     ".git",
     "tailwind.config.js",
-    "tailwind.config.cjs",
-    ".hg",
-    ".projections.json"
+    "tailwind.config.cjs"
   ],
 }
