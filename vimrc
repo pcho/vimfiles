@@ -11,7 +11,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 Plug 'romainl/apprentice'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
